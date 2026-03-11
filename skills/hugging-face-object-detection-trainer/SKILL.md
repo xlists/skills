@@ -20,11 +20,12 @@ Use this skill when users want to:
 - **`hugging-face-jobs`** — General HF Jobs infrastructure: token authentication, hardware flavors, timeout management, cost estimation, secrets, environment variables, scheduled jobs, and result persistence. **Refer to the Jobs skill for any non-training-specific Jobs questions** (e.g., "how do secrets work?", "what hardware is available?", "how do I pass tokens?").
 - **`hugging-face-model-trainer`** — TRL-based language model training (SFT, DPO, GRPO). Use that skill for text/language model fine-tuning.
 
-## Local Script Dependencies
+## Local Script Execution
 
-To run helper scripts locally (like `dataset_inspector.py`, `estimate_cost.py`), install dependencies:
+Helper scripts use PEP 723 inline dependencies. Run them with `uv run`:
 ```bash
-pip install -r requirements.txt
+uv run scripts/dataset_inspector.py --dataset username/dataset-name --split train
+uv run scripts/estimate_cost.py --help
 ```
 
 ## Prerequisites Checklist
@@ -67,7 +68,7 @@ hf_jobs("uv", {
 
 **Option 2: Locally:**
 ```bash
-python scripts/dataset_inspector.py --dataset username/dataset-name --split train
+uv run scripts/dataset_inspector.py --dataset username/dataset-name --split train
 ```
 
 **Option 3: Via `HfApi().run_uv_job()` (if hf_jobs MCP unavailable):**

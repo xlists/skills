@@ -320,8 +320,8 @@ api.create_repo(
 **Solutions:**
 1. Verify `secrets={"HF_TOKEN": "$HF_TOKEN"}` in job config
 2. Verify script calls `login(token=hf_token)` AND sets `training_args.hub_token = hf_token` BEFORE creating the `Trainer`
-3. Check you're logged in locally: `huggingface-cli whoami`
-4. Re-login: `huggingface-cli login`
+3. Check you're logged in locally: `hf auth whoami`
+4. Re-login: `hf auth login`
 
 **Root cause:** The `Trainer` calls `create_repo(token=self.args.hub_token)` during `__init__()` when `push_to_hub=True`. Relying on implicit env-var token resolution is unreliable in Jobs. Calling `login()` saves the token globally, and setting `training_args.hub_token` ensures the Trainer passes it explicitly to all Hub API calls.
 
