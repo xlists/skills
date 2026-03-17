@@ -72,11 +72,22 @@ curl -s "https://huggingface.co/api/papers/{PAPER_ID}"
 This returns structured metadata that can include:
 
 - authors (names and Hugging Face usernames, in case they have claimed the papers)
-- linked models, datasets, and Spaces
 - media URLs
 - summary (abstract) and AI-generated summary
 - project page and GitHub repository
 - organization and engagement metadata
+
+To find models linked to the paper, use:
+
+```bash
+https://huggingface.co/models?other=arxiv:{PAPER_ID}
+```
+
+To find datasets linked to the paper, use:
+
+```bash
+https://huggingface.co/datasets?other=arxiv:{PAPER_ID}
+```
 
 #### Claim paper authorship
 
