@@ -80,13 +80,13 @@ This returns structured metadata that can include:
 To find models linked to the paper, use:
 
 ```bash
-https://huggingface.co/models?other=arxiv:{PAPER_ID}
+curl https://huggingface.co/api/models?filter=arxiv:{PAPER_ID}
 ```
 
 To find datasets linked to the paper, use:
 
 ```bash
-https://huggingface.co/datasets?other=arxiv:{PAPER_ID}
+curl https://huggingface.co/api/datasets?filter=arxiv:{PAPER_ID}
 ```
 
 #### Claim paper authorship
